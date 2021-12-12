@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta  charset="utf-8">
+    <title>登录</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="box">
+    <h2>登錄</h2>
+    <form action="check.php" method="post" enctype="multipart/form-data">
+        <div class="inputBox">
+            <input type="text" name="name" value="" required="required" placeholder=
+                    "           請輸入您的賬號" ><label>賬號</label></div>
+        <div class="inputBox">
+            <input type="password" name="password" value=""	required="required" placeholder=
+                    "           請輸入您的密碼"><label>密碼</label></div>
+
+        <input type="submit" name="submit" value="登錄">
+        <input type="button" onclick="window.location.href='register.html'" name="submit" value="注冊" >
+
+    </form>
+</div>
+</body>
+</html>
+
