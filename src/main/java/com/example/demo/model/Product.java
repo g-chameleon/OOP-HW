@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+/**
+ * product.
+ */
 public class Product {
 
   private long id;
@@ -15,6 +18,9 @@ public class Product {
   public Product() {
   }
 
+  /**
+   * product method.
+   */
   public Product(long id, String name, String imageUrl, int price, String description) {
     this.id = id;
     this.name = name;

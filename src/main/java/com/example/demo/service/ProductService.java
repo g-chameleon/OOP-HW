@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.sql2o.Connection;
 
 
-
+/**
+ * product service.
+ */
 @Service
 public class ProductService {
 
@@ -20,6 +22,10 @@ public class ProductService {
 
   }
 
+  /**
+   * get product.
+   * @return connection.
+   */
   public List<Product> getProducts() {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "select ID id, NAME name, IMAGE_URL imageUrl, PRICE price, DESCRIPTION description"
@@ -29,6 +35,9 @@ public class ProductService {
     }
   }
 
+  /**
+   * get product using keyword.
+   */
   public List<Product> getProducts(String keyword) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "select ID id, NAME name, IMAGE_URL imageUrl, PRICE price, DESCRIPTION description"
