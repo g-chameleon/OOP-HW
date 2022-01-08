@@ -66,19 +66,21 @@
                 </div>
             </div>
         </nav>
-            <div class="w3-modal">
-            <!--LOGIN-FORM-->
-            <form class="w3-modal-content w3-animate-zoom" action="./log.php" method="post">
+
+        <!--LOGIN-->
+        <div class="w3-modal">
+
+            <form class="w3-modal-content w3-animate-zoom" action="logincheck.php" method="post">
                 <div class="w3-container">
                 <h1 class="txt-white" style="text-align: center;"><b>登陸</b></h1>
                 
                 <label for="ac"><span class="txt-white">帳號</span></label>  <!--account-->
-                <input type="text" name="ac" required="required" id="name" placeholder="請輸入帳號">
+                <input type="text" name="login_username" required="required" id="name" placeholder="請輸入帳號">
             
                 <label for="pw"><span class="txt-white">密碼</span></label>    <!--password-->
-                <input type="password" name="pw" required="required" id = "password" placeholder="請輸入密碼">
+                <input type="password" name="login_password" required="required" id = "password" placeholder="請輸入密碼">
                     
-                <button type="submit">login</button>
+                <button type="submit" name="submit">login</button>
                 
                 <label>                                                         <!--remember-->
                     <input type="checkbox" checked="checked" name="remember"><span class="txt-white">  記住我</span>
@@ -89,35 +91,6 @@
                 <span class="psw txt-black"><a href="#">忘記密碼?</a></span>    <!--forgot-->
                 </div>
             </form>
-            </div>
-        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-        <script>
-            function loginFn() {
-            console.log({
-                username:$('#name').val(),
-                password:$('#password').val()
-                })
-            $.ajax({
-                url:'',
-                method:'POST',
-                data:{
-                username:$('#name').val(),
-                password:$('#password').val()
-                },
-                success:function(res) {
-                // 成功
-                console.log(res)
-                if(res.code == 200) {
-                    window.location.href='index.html'+res.data
-                }
-                },
-                error:function(err) {
-                // 失败
-                console.log(err)
-                }
-            })
-            }
-        </script>
+        </div>
     </body>
 </html>
-

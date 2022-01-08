@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW SHOP_登錄註冊</title>
+    <link rel="stylesheet" type="text/css" href="./css/sign_reg.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form action="#">
+          <h1>註冊賬戶</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>使用電子郵箱進行註冊</span>
+          <input type="username" id="username" placeholder="賬號" />
+          <input type="password" id="password"placeholder="密碼" />
+          <input type="email" id="email" placeholder="電子郵件" />
+          <button type="submit" id="signupBtn">Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>登陸賬戶</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>或使用賬戶</span>
+          <input type="email" placeholder="郵箱" />
+          <input type="password" placeholder="密碼" />
+          <a href="#">忘記密碼?</a>
+          <button>登 陸</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>歡迎 回來!</h1>
+            <p>已有賬號？快來登錄吧</p>
+            <button class="ghost" id="signIn">登 陸</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>沒有賬號？快來完成註冊，開啟您的購物之旅！</p>
+            <button class="ghost" id="signUp">註 冊</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
