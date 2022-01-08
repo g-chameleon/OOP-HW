@@ -1,96 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>登陸 | HW shop</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css\w3school.css">
-        <link rel="stylesheet" href="css\login.css">
+<?php
+$conn = mysqli_connect("127.0.0.1", "root", "gmh735539");
+$select_db = mysqli_select_db($conn, "test");
+mysqli_set_charset($conn, "utf8");
+// Include config file
 
-    <!-- 導航欄 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
-        .bbb{
-        background-color:#008CBA;
-        margin-left:120px;
-        border-radius:12px;
+ 
+// Define variables and initialize with empty values
+$username=$_POST["username"];
+$password=$_POST["password"];
+// Processing form data when form is submitted
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $sql = "SELECT * FROM user WHERE username ='".$username."'";
+    $result=mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)==1 && $password==mysqli_fetch_assoc($result)["password"]){
+        session_start();
+        
+        // Store data in session variables
+        $_SESSION["loggedin"] = true;
+        //這些是之後可以用到的變數
+        $_SESSION["id"] = mysqli_fetch_assoc($result)["id"];
+        $_SESSION["username"] = $username;
+        header("location:http://localhost:8080/home.html");
+    }else{
+            function_alert("帳號或密碼錯誤"); 
         }
-    </style>
-    </head>
+}
+    else{
+        function_alert("Something wrong"); 
+    }
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">HW SHOP</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">首頁</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">網購商城</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                商品管理
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">新增商品</a></li>
-                                <li><a class="dropdown-item" href="#">修改商品</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-        
-        
-                    <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link" href="sign.html">登入</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register.html">註冊</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shopping cart.html">購物車</a>
-                        </li>
-                    </ul>
-        
-                    <!--<form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>-->
-                </div>
-            </div>
-        </nav>
+    // Close connection
+    mysqli_close($link);
 
-        <!--LOGIN-->
-        <div class="w3-modal">
-
-            <form class="w3-modal-content w3-animate-zoom" action="logincheck.php" method="post">
-                <div class="w3-container">
-                <h1 class="txt-white" style="text-align: center;"><b>登陸</b></h1>
-                
-                <label for="ac"><span class="txt-white">帳號</span></label>  <!--account-->
-                <input type="text" name="login_username" required="required" id="name" placeholder="請輸入帳號">
-            
-                <label for="pw"><span class="txt-white">密碼</span></label>    <!--password-->
-                <input type="password" name="login_password" required="required" id = "password" placeholder="請輸入密碼">
-                    
-                <button type="submit" name="submit">login</button>
-                
-                <label>                                                         <!--remember-->
-                    <input type="checkbox" checked="checked" name="remember"><span class="txt-white">  記住我</span>
-                </label>
-                </div>
-            
-                <div class="container" style="background-color:#f1f1f1">
-                <span class="psw txt-black"><a href="#">忘記密碼?</a></span>    <!--forgot-->
-                </div>
-            </form>
-        </div>
-    </body>
-</html>
+function function_alert($message) { 
+      
+    // Display the alert box  
+    echo "<script>alert('$message');
+     window.location.href='index.php';
+    </script>"; 
+    return false;
+} 
+?>

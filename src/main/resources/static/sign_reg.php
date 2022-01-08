@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: index.html");
+    exit;  //記得要跳出來，不然會重複轉址過多次
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +24,7 @@
   <body>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="#">
+        <form name="registerForm" method="post" action="./php/register.php" onsubmit="return validateForm()">
           <h1>註冊賬戶</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -22,18 +32,16 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <span>使用電子郵箱進行註冊</span>
-          <input type="username" id="username" placeholder="賬號" />
-          <input type="password" id="password"placeholder="密碼" />
-          <input type="email" id="email" placeholder="電子郵件" />
-          <button type="submit" id="signupBtn">Sign Up</button>
-          <input type="email" placeholder="郵箱" />
-          <input type="password" placeholder="密碼" />
-          <input type="confirm_password" placeholder="確認密碼" />
-          <button>Sign Up</button>
+          <input type="username" id="username" name="username" placeholder="賬號" />
+          <input type="password" id="password" name="password" placeholder="密碼" />
+          <input type="password" id="password_check" name="password_check" placeholder="密碼" />
+          <input type="username" id="tel" name="tel" placeholder="電話" />
+          <input type="submit" name="submit" value="Sign Up">
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="#">
+
+        <form  method="post" action="./php/login.php">
           <h1>登陸賬戶</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -41,10 +49,10 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <span>或使用賬戶</span>
-          <input type="email" placeholder="郵箱" />
-          <input type="password" placeholder="密碼" />
+          <input type="text" name="username" placeholder="賬號" />
+          <input type="password" name="password" id="password" placeholder="密碼" />
           <a href="#">忘記密碼?</a>
-          <button>登 陸</button>
+          <input type="submit" name = "submit" value="Sign In">
         </form>
       </div>
       <div class="overlay-container">
