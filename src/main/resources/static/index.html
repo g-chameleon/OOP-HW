@@ -40,7 +40,7 @@
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="http://localhost/OOP-HW/src/main/resources/static/input.php">新增商品</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="myFunction()">新增商品</a></li>
                         <li><a class="dropdown-item" href="#">修改商品</a></li>
                     </ul>
                 </li>
@@ -95,6 +95,10 @@
 -->
 
 <script>
+    function myFunction()
+{
+    alert("您好請先登錄");
+}
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
