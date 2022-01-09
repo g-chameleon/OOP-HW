@@ -23,11 +23,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["username"] = $username;
         header("location:http://localhost:8080/home.html");
     }else{
-            function_alert("帳號或密碼錯誤"); 
+            echo ("<script>alert('帳號或密碼錯誤'); location.href='../sign_reg.php';</script>");
         }
 }
     else{
-        function_alert("Something wrong"); 
+            echo ("<script>alert('服務器遇到一些問題，請稍後重試'); location.href='../sign_reg.php';</script>");
     }
 
     // Close connection
