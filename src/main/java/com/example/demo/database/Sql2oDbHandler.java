@@ -5,6 +5,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.sql2o.Sql2o;
 
+/**
+ * sql handler.
+ */
 @Service
 @PropertySource("classpath:application.properties")
 public class Sql2oDbHandler {
