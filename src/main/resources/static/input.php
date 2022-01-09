@@ -63,8 +63,8 @@
 <?php
 if(isset($_POST['inpBtn']))
 {
-    $conn = mysqli_connect('127.0.0.1','root','gmh735539');
-    $select_db = mysqli_select_db($conn,'fcu-shop');
+    $conn = mysqli_connect("127.0.0.1","root","gmh735539");
+    $select_db = mysqli_select_db($conn,"fcu-shop");
     mysqli_query($conn,'utf8');    
 
     $NAME=$_POST['NAME'];
